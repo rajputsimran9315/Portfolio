@@ -1,74 +1,65 @@
-/* ── TYPEWRITER ── */
-const roles = [
-  'Full-Stack Developer',
-  'API Architect',
-  'Open Source Contributor',
-  'Performance Enthusiast',
-  'UI/UX-minded Engineer',
-];
-let ri = 0, ci = 0, deleting = false;
-const tw = document.getElementById('typewriter');
+// ===========================
+// ACTIVE NAV LINK ON SCROLL
+// ===========================
 
-function typewrite() {
-  const current = roles[ri];
-  if (!deleting) {
-    tw.innerHTML = current.slice(0, ci + 1) + '<span class="cursor"></span>';
-    ci++;
-    if (ci === current.length) {
-      deleting = true;
-      setTimeout(typewrite, 1800);
-      return;
-    }
-  } else {
-    tw.innerHTML = current.slice(0, ci - 1) + '<span class="cursor"></span>';
-    ci--;
-    if (ci === 0) {
-      deleting = false;
-      ri = (ri + 1) % roles.length;
-    }
-  }
-  setTimeout(typewrite, deleting ? 55 : 90);
-}
+var sections = document.querySelectorAll("section");
+var navLinks = document.querySelectorAll(".nav-links a");
 
-typewrite();
+window.addEventListener("scroll", function () {
+  var scrollPos = window.scrollY + 80;
 
-/* ── SCROLL REVEAL ── */
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      io.unobserve(e.target);
+  sections.forEach(function (section) {
+    var top = section.offsetTop;
+    var height = section.offsetHeight;
+    var id = section.getAttribute("id");
+
+    if (scrollPos >= top && scrollPos < top + height) {
+      navLinks.forEach(function (link) {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + id) {
+          link.classList.add("active");
+        }
+      });
     }
   });
-}, { threshold: 0.12 });
-
-reveals.forEach(el => io.observe(el));
-
-/* ── HAMBURGER MENU ── */
-const ham = document.getElementById('hamburger');
-const mob = document.getElementById('mobile-menu');
-
-ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
-  mob.classList.toggle('open');
 });
 
-function closeMobile() {
-  ham.classList.remove('open');
-  mob.classList.remove('open');
+
+// ===========================
+// FADE IN ON SCROLL
+// ===========================
+
+var fadeElements = document.querySelectorAll(
+  ".about-box, .exp-card, .skill-card, .contact-item"
+);
+
+function checkFade() {
+  fadeElements.forEach(function (el) {
+    var top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 60) {
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    }
+  });
 }
 
-/* ── NAV ACTIVE HIGHLIGHT ON SCROLL ── */
-const sections = document.querySelectorAll('section[id]');
-const links = document.querySelectorAll('.nav-links a');
+fadeElements.forEach(function (el) {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(20px)";
+  el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+});
 
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+window.addEventListener("scroll", checkFade);
+checkFade();
+
+
+// ===========================
+// SMOOTH CLOSE MOBILE NAV
+// ===========================
+
+navLinks.forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.forEach(function (l) { l.classList.remove("active"); });
+    this.classList.add("active");
   });
-  links.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--cyan)' : '';
-  });
-}, { passive: true });
+});
