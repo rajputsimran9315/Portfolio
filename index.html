@@ -3,113 +3,222 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simran Singh - Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Simran Singh - Responsive Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-logo">Simran Singh</div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
   </nav>
 
   <!-- HOME -->
-  <section id="home" class="home-section">
-    <h1>Hi, I'm <span class="highlight">Simran Singh</span></h1>
-    <p>Aspiring Data & Web Professional passionate about building clean, data-driven solutions.</p>
-    <a href="#experience" class="btn">View My Work</a>
+  <section id="home" class="section home-section">
+    <div class="home-img-box">
+      <img src="https://via.placeholder.com/300" alt="Simran Singh" class="profile-img" />
+    </div>
+    <div class="home-text">
+      <p class="greeting">Hello, I'm</p>
+      <h1 class="big-name">Simran Singh</h1>
+      <p class="role">MIS Intern &nbsp;|&nbsp; Developer</p>
+      <div class="home-btns">
+        <a href="https://drive.google.com/file/d/1K47k7Uar5Ai6cmaxkot4Q188AJ1AhVar/view?usp=drivesdkDZ" download class="btn btn-outline">Download CV</a>
+        <a href="#contact" class="btn btn-dark">Contact Info</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="section">
+  <section id="about" class="section about-section">
+    <p class="section-sub">Get To Know More</p>
     <h2 class="section-title">About Me</h2>
-    <div class="about-box">
-      <p>
-        I'm Simran Singh, a motivated tech enthusiast with a foundation in both web development
-        and data management. My internship at Valeurfabtex gave me real-world experience in MIS,
-        where I applied my technical skills to meaningful business challenges. I enjoy building
-        things that are clean, functional, and purposeful.
-      </p>
+    <div class="about-grid">
+      <div class="about-img-box">
+        <img src="https://via.placeholder.com/280x340" alt="Simran Singh" class="about-img" />
+      </div>
+      <div class="about-right">
+        <div class="about-cards">
+          <div class="about-card">
+            <span class="about-card-icon">&#128100;</span>
+            <h3>Experience</h3>
+            <p>2 Months<br/>MIS Intern</p>
+          </div>
+          <div class="about-card">
+            <span class="about-card-icon">&#127891;</span>
+            <h3>Education</h3>
+            <p>Bachelor's Degree<br/>Major in Mathematics<br/>Minor: Computer Science</p>
+          </div>
+        </div>
+        <p class="about-desc">
+          I'm Simran Singh, a B.Sc. student in Mathematics & Computer Science
+           with a passion for full-stack web development.
+            My math background gives me a strong foundation in logic and 
+            structured thinking — skills that translate directly into writing clean, 
+            efficient code. I love exploring new technologies and turning
+             ideas into working products. Right now I'm focused on building 
+             real projects and growing into a developer who ships things
+              that matter.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="section section-alt">
+  <section id="experience" class="section exp-section">
+    <p class="section-sub">Explore My</p>
     <h2 class="section-title">Experience</h2>
-    <div class="exp-card">
-      <div class="exp-company">Valeurfabtex</div>
-      <div class="exp-role">MIS Intern</div>
-      <div class="exp-duration">2 Months Internship</div>
-      <p class="exp-desc">
-        Worked as a Management Information Systems intern, supporting data collection,
-        reporting, and analysis workflows. Gained practical exposure to database management
-        and assisted in maintaining information systems to support business operations.
-      </p>
-      <span class="exp-tag">MIS &middot; Data Reporting</span>
+    <div class="exp-grid">
+      <div class="exp-box">
+        <h3 class="exp-box-title">Technical Skills</h3>
+        <div class="exp-items">
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>MySQL</strong><br/><small>Intermediate</small></div></div>
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>HTML &amp; CSS</strong><br/><small>Intermediate</small></div></div>
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>JavaScript</strong><br/><small>Basic</small></div></div>
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>Python</strong><br/><small>Basic</small></div></div>
+        </div>
+      </div>
+      <div class="exp-box">
+        <h3 class="exp-box-title">Work Experience</h3>
+        <div class="exp-items">
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>MIS Intern</strong><br/><small>Valeurfabtex &mdash; 2 Months</small></div></div>
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>Data Reporting</strong><br/><small>Collection &amp; Analysis</small></div></div>
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>Database Management</strong><br/><small>MySQL Operations</small></div></div>
+          <div class="exp-item"><span class="check">&#10003;</span><div><strong>Web Development</strong><br/><small>HTML, CSS, JS Projects</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section projects-section">
+    <p class="section-sub">Browse My Recent</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-img-box">
+          <img src="https://via.placeholder.com/400x200?text=Project+One" alt="Project One" class="project-img" />
+        </div>
+        <h3 class="project-name">Student Database</h3>
+        <div class="project-btns">
+          <a href="#" class="btn btn-outline btn-sm">Github</a>
+          <a href="#" class="btn btn-outline btn-sm">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-box">
+          <img src="https://via.placeholder.com/400x200?text=Project+Two" alt="Project Two" class="project-img" />
+        </div>
+        <h3 class="project-name">MIS Dashboard</h3>
+        <div class="project-btns">
+          <a href="#" class="btn btn-outline btn-sm">Github</a>
+          <a href="#" class="btn btn-outline btn-sm">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-box">
+          <img src="https://via.placeholder.com/400x200?text=Responsive+Website" alt="Responsive Website" class="project-img" />
+        </div>
+        <h3 class="project-name">Responsive Website</h3>
+        <div class="project-btns">
+          <a href="https://github.com/rajputsimran9315" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Github</a>
+          <a href="index.html" class="btn btn-outline btn-sm">Live Demo</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="section">
+  <section id="skills" class="section skills-section">
+    <p class="section-sub">My Technical</p>
     <h2 class="section-title">Skills</h2>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-icon">🗄️</div>
         <div class="skill-name">MySQL</div>
-        <div class="skill-type">Database</div>
+        <div class="skill-level">Intermediate</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">🌐</div>
         <div class="skill-name">HTML</div>
-        <div class="skill-type">Markup</div>
+        <div class="skill-level">Intermediate</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">🎨</div>
         <div class="skill-name">CSS</div>
-        <div class="skill-type">Styling</div>
+        <div class="skill-level">Intermediate</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">⚡</div>
         <div class="skill-name">JavaScript</div>
-        <div class="skill-type">Programming</div>
+        <div class="skill-level">Basic</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">🐍</div>
         <div class="skill-name">Python</div>
-        <div class="skill-type">Programming</div>
+        <div class="skill-level">Basic</div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section section-alt">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-box">
-      <div class="contact-item">
-        <span class="contact-label">Email</span>
-        <span class="contact-value">simransingh@email.com</span>
+  <section id="contact" class="section contact-section">
+    <p class="section-sub">Get In Touch</p>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <h3>Email</h3>
+        <p>rajput.simran9315@gmail.com</p>
+        <a href="mailto:rajput.simran9315@gmail.com" class="btn btn-outline btn-sm">Send Email</a>
       </div>
-      <div class="contact-item">
-        <span class="contact-label">Location</span>
-        <span class="contact-value">India</span>
+      <div class="contact-card">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" width="36" height="36" aria-hidden="true">
+          <path d="M12 .5C5.73.5.75 5.48.75 11.77c0 4.9 3.17 9.06 7.57 10.52.55.1.75-.24.75-.53 0-.26-.01-1.12-.01-2.03-3.08.67-3.73-1.49-3.73-1.49-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66 1.09.08 1.66 1.12 1.66 1.12.97 1.66 2.54 1.18 3.16.9.1-.7.38-1.18.69-1.45-2.46-.28-5.05-1.23-5.05-5.47 0-1.21.43-2.2 1.13-2.98-.11-.28-.49-1.4.11-2.92 0 0 .92-.29 3.02 1.13a10.43 10.43 0 0 1 2.75-.37c.93 0 1.87.12 2.75.37 2.1-1.42 3.02-1.13 3.02-1.13.6 1.52.22 2.64.11 2.92.7.78 1.13 1.77 1.13 2.98 0 4.25-2.6 5.18-5.07 5.46.39.34.73 1.02.73 2.06 0 1.49-.01 2.69-.01 3.06 0 .29.2.64.76.53C19.08 20.83 22.25 16.67 22.25 11.77 22.25 5.48 17.27.5 12 .5z"/>
+        </svg>
+        <h3>GitHub</h3>
+        <p>github.com/simransingh</p>
+        <a href="https://github.com/rajputsimran9315" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Profile</a>
       </div>
-      <div class="contact-item">
-        <span class="contact-label">Status</span>
-        <span class="contact-value">Open to Opportunities</span>
+      <div class="contact-card">
+        <span class="contact-icon">💼</span>
+        <h3>LinkedIn</h3>
+        <p>linkedin.com/in/simransingh</p>
+        <a href="https://www.linkedin.com/in/simran-singh-401970303/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Profile</a>
       </div>
     </div>
   </section>
 
+  <footer class="footer">
+    <p>© 2026 Simran Singh. Built with HTML, CSS, and JavaScript.</p>
+    <p><a href="https://github.com/rajputsimran9315" target="_blank" rel="noopener noreferrer">GitHub profile</a></p>
+  </footer>
+
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2026 Simran Singh. All rights reserved.</p>
+    <p>Copyright &copy; 2026 Simran Singh. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>

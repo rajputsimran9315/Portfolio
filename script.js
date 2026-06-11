@@ -1,65 +1,86 @@
-// ===========================
-// ACTIVE NAV LINK ON SCROLL
-// ===========================
+// Close nav when any link is clicked
+// ======================
+// HAMBURGER TOGGLE
+// ======================
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+const allLinks = document.querySelectorAll(".nav-links a");
 
-var sections = document.querySelectorAll("section");
-var navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", function () {
-  var scrollPos = window.scrollY + 80;
-
-  sections.forEach(function (section) {
-    var top = section.offsetTop;
-    var height = section.offsetHeight;
-    var id = section.getAttribute("id");
-
-    if (scrollPos >= top && scrollPos < top + height) {
-      navLinks.forEach(function (link) {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + id) {
-          link.classList.add("active");
-        }
-      });
-    }
+if (hamburger && navLinks) {
+  hamburger.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("open");
+    // set accessible state
+    hamburger.setAttribute("aria-expanded", String(isOpen));
   });
-});
 
-
-// ===========================
-// FADE IN ON SCROLL
-// ===========================
-
-var fadeElements = document.querySelectorAll(
-  ".about-box, .exp-card, .skill-card, .contact-item"
-);
-
-function checkFade() {
-  fadeElements.forEach(function (el) {
-    var top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 60) {
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }
+  // Close nav when any link is clicked
+  allLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      navLinks.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
-fadeElements.forEach(function (el) {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(20px)";
-  el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-});
 
-window.addEventListener("scroll", checkFade);
-checkFade();
+// ======================
+// ACTIVE LINK ON SCROLL (IntersectionObserver)
+// ======================
+const sections = document.querySelectorAll("section[id]");
+if (sections.length > 0 && allLinks.length > 0) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        allLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
+      });
+    },
+    { root: null, rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
+}
 
 
-// ===========================
-// SMOOTH CLOSE MOBILE NAV
-// ===========================
+// ======================
+// NAVBAR SHADOW ON SCROLL (toggle class)
+// ======================
+const navbar = document.querySelector(".navbar");
+if (navbar) {
+  const handleNavShadow = () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  };
 
-navLinks.forEach(function (link) {
-  link.addEventListener("click", function () {
-    navLinks.forEach(function (l) { l.classList.remove("active"); });
-    this.classList.add("active");
-  });
-});
+  window.addEventListener("scroll", handleNavShadow, { passive: true });
+  handleNavShadow();
+}
+
+
+// ======================
+// FADE IN ON SCROLL (IntersectionObserver)
+// ======================
+const fadeItems = document.querySelectorAll(
+  ".project-card, .skill-card, .contact-card, .exp-box, .about-card"
+);
+
+if (fadeItems.length > 0) {
+  fadeItems.forEach((el) => el.classList.add("reveal"));
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      });
+    },
+    { root: null, rootMargin: "0px 0px -60px 0px", threshold: 0.01 }
+  );
+
+  fadeItems.forEach((el) => revealObserver.observe(el));
+}
